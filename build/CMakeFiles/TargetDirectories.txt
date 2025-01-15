@@ -1,0 +1,3 @@
+/home/marinph/PG/build/CMakeFiles/SailTest.dir
+/home/marinph/PG/build/CMakeFiles/edit_cache.dir
+/home/marinph/PG/build/CMakeFiles/rebuild_cache.dir

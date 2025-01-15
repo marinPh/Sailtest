@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/marinph/PG/build",
+  "command": "/usr/bin/g++  -I/home/marinph/PG/src -I/home/marinph/PG/src/navigation -g -std=gnu++11 -o CMakeFiles/SailTest.dir/main.cpp.o -c /home/marinph/PG/main.cpp",
+  "file": "/home/marinph/PG/main.cpp",
+  "output": "CMakeFiles/SailTest.dir/main.cpp.o"
+},
+{
+  "directory": "/home/marinph/PG/build",
+  "command": "/usr/bin/g++  -I/home/marinph/PG/src -I/home/marinph/PG/src/navigation -g -std=gnu++11 -o CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o -c /home/marinph/PG/src/navigation/boat.cpp",
+  "file": "/home/marinph/PG/src/navigation/boat.cpp",
+  "output": "CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o"
+}
+]
