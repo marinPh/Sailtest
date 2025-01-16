@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/marinph/PG/src -I/home/marinph/PG/src/navigation
+CXX_INCLUDES = -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation
 
-CXX_FLAGS = -g -std=gnu++11
+CXX_FLAGS = -g -std=gnu++17
 

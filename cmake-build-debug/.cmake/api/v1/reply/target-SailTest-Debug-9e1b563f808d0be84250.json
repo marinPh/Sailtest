@@ -49,18 +49,18 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++11"
+					"fragment" : "-g -std=gnu++17 -fdiagnostics-color=always"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/home/marinph/PG/src"
+					"path" : "/home/marinph/PG/Sailtest/src"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/marinph/PG/src/navigation"
+					"path" : "/home/marinph/PG/Sailtest/src/navigation"
 				}
 			],
 			"language" : "CXX",
@@ -70,7 +70,7 @@
 				[
 					1
 				],
-				"standard" : "11"
+				"standard" : "17"
 			},
 			"sourceIndexes" : 
 			[

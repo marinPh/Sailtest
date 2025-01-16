@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(SailTest)
 
 # Set the C++ standard
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find the SFML package with necessary components
@@ -13,8 +13,8 @@ find_package(glm REQUIRED CONFIG)  # Using CONFIG mode to get modern CMake targe
 
 # List all source files
 set(SOURCES
-    main.cpp
-    src/navigation/boat.cpp
+        main.cpp
+        src/navigation/boat.cpp
 )
 
 # Add the executable
@@ -22,15 +22,15 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Add include directories for headers
 target_include_directories(${PROJECT_NAME} PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/navigation
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/navigation
 )
 
 # Link SFML libraries to the executable
 target_link_libraries(${PROJECT_NAME}
-    sfml-graphics
-    sfml-window
-    sfml-system
+        sfml-graphics
+        sfml-window
+        sfml-system
 )
 
 
