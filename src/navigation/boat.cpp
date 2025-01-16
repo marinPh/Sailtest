@@ -14,7 +14,7 @@ glm::vec2 Boat::computeRudderForce() {
     double drag = 0.5 * waterDensity * speed * speed * rudderArea * CD;
 
     // For simplicity, assume drag acts along -x and lift along y-axis of boat frame.
-    return glm::vec2(-drag, lift);
+    return glm::vec2(-drag, -lift);
 }
 
 void Boat::motorIncrement(double dt) {
@@ -96,7 +96,7 @@ glm::vec2 Boat::computeKeelForce() {
     // - lift acts perpendicular to flow (lateral force).
     // Convert these forces back into boat’s frame if necessary.
     // Here we assume simplified directions:
-    return glm::vec2(-drag, lift);
+    return glm::vec2(-drag, -lift);
 }
 
 
@@ -132,7 +132,7 @@ void Boat::update(double dt) {
     momentZ = F_rudder.y * distanceRudderToCG + F_keel.y * distanceKeelToCG;
 
     // Introduce yaw damping
-    double yawDampingCoefficient =100.0;
+    double yawDampingCoefficient =300.0;
     double dampingMoment = -yawDampingCoefficient * yawRate;
 
     // Total yaw moment including damping
