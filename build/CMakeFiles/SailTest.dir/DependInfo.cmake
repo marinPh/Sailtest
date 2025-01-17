@@ -10,6 +10,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/marinph/PG/Sailtest/main.cpp" "CMakeFiles/SailTest.dir/main.cpp.o" "gcc" "CMakeFiles/SailTest.dir/main.cpp.o.d"
   "/home/marinph/PG/Sailtest/src/navigation/boat.cpp" "CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o" "gcc" "CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o.d"
+  "/home/marinph/PG/Sailtest/src/navigation/hull.cpp" "CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o" "gcc" "CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o.d"
+  "/home/marinph/PG/Sailtest/src/navigation/keel.cpp" "CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o" "gcc" "CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o.d"
+  "/home/marinph/PG/Sailtest/src/navigation/rudder.cpp" "CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o" "gcc" "CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o.d"
+  "/home/marinph/PG/Sailtest/src/navigation/sail.cpp" "CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o" "gcc" "CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

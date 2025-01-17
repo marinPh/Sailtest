@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(SailTest)
 
 # Set the C++ standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find the SFML package with necessary components
@@ -15,6 +15,10 @@ find_package(glm REQUIRED CONFIG)  # Using CONFIG mode to get modern CMake targe
 set(SOURCES
         main.cpp
         src/navigation/boat.cpp
+        src/navigation/rudder.cpp   # Add Rudder source file
+    src/navigation/keel.cpp     # Add Keel source file
+    src/navigation/hull.cpp     # Add Hull source file
+        src/navigation/sail.cpp     # Add Sail source file
 )
 
 # Add the executable

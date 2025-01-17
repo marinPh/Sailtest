@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation
 
-CXX_FLAGS = -g -std=gnu++17
+CXX_FLAGS = -g -std=gnu++20
 

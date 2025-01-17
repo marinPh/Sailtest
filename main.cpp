@@ -32,6 +32,23 @@ sf::Text metaData(sf::Font& font, std::string str, float x, float y) {
     text.setString(str);
     return text;
 }
+//both vectors are in boat frame
+void drawSail(sf::RenderWindow& window, const sf::Vector2f& mast, const sf::Vector2f& end, const sf::Color& color, Boat& boatO,sf::Vector2f& position) {
+
+    //must convert to world frame
+
+
+    sf::Vector2f worldMast = rotateVector(mast, boatO.getDirection()) + position;
+    sf::Vector2f worldEnd = rotateVector(end, boatO.getDirection()) + position;
+    //std::cout << "world mast: " << position.x << " " << position.y << std::endl;
+    sf::Vertex line[] = {
+        sf::Vertex(worldMast, color),
+        sf::Vertex(worldEnd, color)
+    };
+    window.draw(line, 100, sf::Lines);
+}
+
+
 
 void wasd(Boat& boatO, sf::Time dt) {
      if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -53,6 +70,14 @@ void wasd(Boat& boatO, sf::Time dt) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
             sf::sleep(sf::milliseconds(100000));
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+        {
+           boatO.sailIncrement(dt.asSeconds());
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+        {
+            boatO.sailDecrement(dt.asSeconds());
         }
 }
 
@@ -128,12 +153,15 @@ int main()
         auto vec = boatO.GetWVec();
 
         wasd(boatO, dt);
+        auto revVel = boatO.GetVec();
+
+        auto AoT = std::atan2(revVel.y, revVel.x);
        
 
-        auto F_r = boatO.computeRudderForce();
-        auto F_keel = boatO.computeKeelForce();
+        auto F_r = boatO.computeRudderForce(AoT);
+        auto F_keel = boatO.computeKeelForce(AoT);
         auto speedText = metaData(font, "Speed: " + std::to_string(std::sqrt(vec.x * vec.x + vec.y * vec.y)), 5.f, 5.f);
-        auto frc = metaData(font, "forces: " + std::to_string(boatO.computeKeelForce().x) + " " + std::to_string(boatO.computeKeelForce().y), 5.f, 50.f);
+        auto frc = metaData(font, "forces: " + std::to_string(boatO.computeTotalForce().x) + " " + std::to_string(boatO.computeTotalForce().y), 5.f, 50.f);
         auto diry = metaData(font, "Direction: " + std::to_string(boatO.getDirection()), 5.f, 100.f);
         auto vel = metaData(font, "vel: " + std::to_string(boatO.velocity.x) + "," + std::to_string(boatO.velocity.y), 5.f, 150.f);
         auto moment = metaData(font, "moment = "+ std::to_string(F_r.y)+" * "+std::to_string(boatO.distanceRudderToCG)+" + "+std::to_string(F_keel.y) +"*"+std::to_string(boatO.distanceRudderToCG) + "=" + std::to_string(boatO.momentZ) , 5.f, 250.f);
@@ -188,16 +216,21 @@ int main()
         
         // Compute starting position at the back of the icon
         sf::Vector2f backStartPos = boatPos + rotatedBackOffset;
+        
+        glm::vec2 vecA  = boatO.computeKeelForce(AoT) ; // define or obtain this vector
+        glm::vec2 vecB = boatO.computeRudderForce(AoT); // define or obtain this vector
 
-        glm::vec2 vecA  = boatO.computeKeelForce() ; // define or obtain this vector
-        glm::vec2 vecB = boatO.computeRudderForce(); // define or obtain this vector
-
-        sf::Vector2f vecF = sf::Vector2f(boatO.motorForce, 0);
+        sf::Vector2f vecF = sf::Vector2f(boatO.getSailEnd().x*100, boatO.getSailEnd().y*100);
         sf::Vector2f vecS = sf::Vector2f(boatO.GetVec().x, boatO.GetVec().y);
+
+        auto worldWind = glm::vec2(0.0f, 10.0f);
+
+        auto relativeWind = boatO.computeHullForce();
+        auto rotatedWind = rotateVector(sf::Vector2f(relativeWind.x, relativeWind.y), yaw);
 
         sf::Vector2f rotatedVecA = rotateVector(sf::Vector2f(vecA.x, vecA.y), yaw);
         sf::Vector2f rotatedVecB = rotateVector(sf::Vector2f(vecB.x, vecB.y), yaw);
-        sf::Vector2f rotatedVecF = rotateVector(sf::Vector2f(boatO.motorForce,0.0), yaw);
+        sf::Vector2f rotatedVecF = rotateVector(sf::Vector2f(vecF.x, vecF.y), yaw);
         sf::Vector2f rotatedVecS = rotateVector(sf::Vector2f(boatO.GetWVec().x, boatO.GetWVec().y), yaw);
         //sf::Vector2f rotatedVecA = sf::Vector2f(vecA.x, vecA.y);
         //sf::Vector2f rotatedVecB = sf::Vector2f(vecB.x, vecB.y);
@@ -214,9 +247,13 @@ int main()
         
         sf::Vector2f startPosF = boatPos;
         sf::Vector2f endPosF = startPosF + rotatedVecF;
+        //std :: cout << "startposF: " << boatO.getSailAngle()<< std::endl;
 
         sf::Vector2f startPosS = boatPos;
         sf::Vector2f endPosS = startPosS + rotatedVecS;
+
+        sf::Vector2f startPosWind = boatPos;
+        sf::Vector2f endPosWind = startPosWind + rotatedWind* 10.0f;
 
 
         // Draw the vectors
@@ -224,6 +261,9 @@ int main()
         drawVector(window, startPosB, endPosB, sf::Color::Blue);
         drawVector(window, startPosF, endPosF, sf::Color::Green);
         drawVector(window, startPosS, endPosS, sf::Color::Black);
+        drawVector(window, startPosWind, endPosWind, sf::Color::Magenta);
+        //drawSail(window, sf::Vector2f(0.f, 0.f), sf::Vector2f(boatO.getSailEnd().x, boatO.getSailEnd().y), sf::Color::Green, boatO, boatPos);
+
 
 
 

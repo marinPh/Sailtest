@@ -177,6 +177,102 @@ src/navigation/boat.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/boat.cpp.s
 .PHONY : src/navigation/boat.cpp.s
 
+src/navigation/hull.o: src/navigation/hull.cpp.o
+.PHONY : src/navigation/hull.o
+
+# target to build an object file
+src/navigation/hull.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o
+.PHONY : src/navigation/hull.cpp.o
+
+src/navigation/hull.i: src/navigation/hull.cpp.i
+.PHONY : src/navigation/hull.i
+
+# target to preprocess a source file
+src/navigation/hull.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/hull.cpp.i
+.PHONY : src/navigation/hull.cpp.i
+
+src/navigation/hull.s: src/navigation/hull.cpp.s
+.PHONY : src/navigation/hull.s
+
+# target to generate assembly for a file
+src/navigation/hull.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/hull.cpp.s
+.PHONY : src/navigation/hull.cpp.s
+
+src/navigation/keel.o: src/navigation/keel.cpp.o
+.PHONY : src/navigation/keel.o
+
+# target to build an object file
+src/navigation/keel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o
+.PHONY : src/navigation/keel.cpp.o
+
+src/navigation/keel.i: src/navigation/keel.cpp.i
+.PHONY : src/navigation/keel.i
+
+# target to preprocess a source file
+src/navigation/keel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/keel.cpp.i
+.PHONY : src/navigation/keel.cpp.i
+
+src/navigation/keel.s: src/navigation/keel.cpp.s
+.PHONY : src/navigation/keel.s
+
+# target to generate assembly for a file
+src/navigation/keel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/keel.cpp.s
+.PHONY : src/navigation/keel.cpp.s
+
+src/navigation/rudder.o: src/navigation/rudder.cpp.o
+.PHONY : src/navigation/rudder.o
+
+# target to build an object file
+src/navigation/rudder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o
+.PHONY : src/navigation/rudder.cpp.o
+
+src/navigation/rudder.i: src/navigation/rudder.cpp.i
+.PHONY : src/navigation/rudder.i
+
+# target to preprocess a source file
+src/navigation/rudder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.i
+.PHONY : src/navigation/rudder.cpp.i
+
+src/navigation/rudder.s: src/navigation/rudder.cpp.s
+.PHONY : src/navigation/rudder.s
+
+# target to generate assembly for a file
+src/navigation/rudder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.s
+.PHONY : src/navigation/rudder.cpp.s
+
+src/navigation/sail.o: src/navigation/sail.cpp.o
+.PHONY : src/navigation/sail.o
+
+# target to build an object file
+src/navigation/sail.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o
+.PHONY : src/navigation/sail.cpp.o
+
+src/navigation/sail.i: src/navigation/sail.cpp.i
+.PHONY : src/navigation/sail.i
+
+# target to preprocess a source file
+src/navigation/sail.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/sail.cpp.i
+.PHONY : src/navigation/sail.cpp.i
+
+src/navigation/sail.s: src/navigation/sail.cpp.s
+.PHONY : src/navigation/sail.s
+
+# target to generate assembly for a file
+src/navigation/sail.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/sail.cpp.s
+.PHONY : src/navigation/sail.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +288,18 @@ help:
 	@echo "... src/navigation/boat.o"
 	@echo "... src/navigation/boat.i"
 	@echo "... src/navigation/boat.s"
+	@echo "... src/navigation/hull.o"
+	@echo "... src/navigation/hull.i"
+	@echo "... src/navigation/hull.s"
+	@echo "... src/navigation/keel.o"
+	@echo "... src/navigation/keel.i"
+	@echo "... src/navigation/keel.s"
+	@echo "... src/navigation/rudder.o"
+	@echo "... src/navigation/rudder.i"
+	@echo "... src/navigation/rudder.s"
+	@echo "... src/navigation/sail.o"
+	@echo "... src/navigation/sail.i"
+	@echo "... src/navigation/sail.s"
 .PHONY : help
 
 

@@ -1,125 +1,183 @@
 #include "boat.h"
 #include <algorithm> // For std::clamp
+#include <execution>
+#include <future>
+#include <iostream>
+#include <pstl/glue_numeric_defs.h>
+#include <vector>
+#include "sail.h"
 // Compute a simplified rudder force based on rudder angle and boat speed.
-glm::vec2 Boat::computeRudderForce() {
-    double speed = std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
-    //TODO: must be more precise
-    double angleOfAttack = rudderAngle; // simplified assumption
 
-    // Simplified coefficients (replace with better models as needed)
-    double CL = 0.5 * std::sin(2 * angleOfAttack);
-    double CD = 0.1 + 0.5 * std::sin(angleOfAttack) * std::sin(angleOfAttack);
-
-    double lift = 0.5 * waterDensity * speed * speed * rudderArea * CL;
-    double drag = 0.5 * waterDensity * speed * speed * rudderArea * CD;
-
-    // For simplicity, assume drag acts along -x and lift along y-axis of boat frame.
-    return glm::vec2(-drag, -lift);
+Boat::Boat() : rudder(glm::vec2(-2.0f, 0.0f)), keel(glm::vec2(2.0f, 0.0f)), hull(), sail(glm::vec2(0.0f, 0.0f))
+{
+    surfaces.push_back(&rudder);
+    surfaces.push_back(&keel);
+    surfaces.push_back(&hull);
+    //surfaces.push_back(&sail);
 }
 
-void Boat::motorIncrement(double dt) {
+glm::vec2 rotateVector(const glm::vec2 &v, float yaw)
+{
+    float cosA = std::cos(yaw);
+    float sinA = std::sin(yaw);
+    return glm::vec2(v.x * cosA - v.y * sinA, v.x * sinA + v.y * cosA);
+}
+
+glm::vec2 Boat::getSailEnd(){
+    //get length of sail then rotate it by the sail angle
+    auto base =sail.getBase();
+    auto angle = sail.getAngle();
+
+    return glm::vec2(base * std::cos(angle), base * std::sin(angle));
+}
+
+double Boat::getSailAngle() const {
+    return sail.getAngle();
+}
+
+void Boat::setRudderAngle(double angle)
+{
+    rudder.setRudderAngle(angle);
+}
+
+
+glm::vec2 Boat::computeRudderForce(double angleOfAttack)
+{
+    // Compute the force produced by the rudder
+    glm::vec2 F_rudder = surfaces[0]->computeWForce(velocity, angleOfAttack, waterDensity);
+    return F_rudder;
+}
+
+void Boat::motorIncrement(double dt)
+{
     motorForce += 100.0 * dt;
 }
 
-void Boat::motorDecrement(double dt) {
+void Boat::motorDecrement(double dt)
+{
     motorForce -= 100.0 * dt;
 }
 
-void Boat::rudderIncrement(double dt) {
-    rudderAngle += 1.0 * dt;
-    rudderAngle = std::clamp(rudderAngle, -1.2,1.2); // Clamp between -60 and 60 degrees
+void Boat::rudderIncrement(double dt)
+{
+    rudder.incrementRudderAngle(dt);
 }
 
-void Boat::rudderDecrement(double dt) {
-    rudderAngle -= 1.0 * dt;
-    rudderAngle = std::clamp(rudderAngle, -1.2,1.2); // Clamp between -60 and 60 degrees
+void Boat::rudderDecrement(double dt)
+{
+    rudder.decrementRudderAngle(dt);
 }
 
-double Boat::getDirection() {
-    
-
-    return glm::degrees(yaw) ;
+double Boat::getDirection()
+{
+    return glm::degrees(yaw);
 }
 
-glm::vec2 Boat::GetVec() {
-    float cosYaw = std::cos(yaw);
-    float sinYaw = std::sin(yaw);
-
-    // Transform the body-fixed velocity to world coordinates
-    glm::vec2 worldVelocity(
-        velocity.x * cosYaw - velocity.y * sinYaw,
-        velocity.x * sinYaw + velocity.y * cosYaw
-    );
-
+glm::vec2 Boat::GetVec()
+{
     return velocity;
 }
 
-glm::vec2 Boat::GetWVec() {
+glm::vec2 Boat::GetWVec()
+{
     float cosYaw = std::cos(yaw);
     float sinYaw = std::sin(yaw);
 
     // Transform the body-fixed velocity to world coordinates
-    glm::vec2 worldVelocity(
-        velocity.x * cosYaw - velocity.y * sinYaw,
-        velocity.x * sinYaw + velocity.y * cosYaw
-    );
+    glm::vec2 worldVelocity(velocity.x * cosYaw - velocity.y * sinYaw, velocity.x * sinYaw + velocity.y * cosYaw);
 
     return worldVelocity;
 }
 
-double Boat:: getRudderPosition() {
-        return rudderAngle;
-    }
-
-
+double Boat::getRudderPosition()
+{
+    return rudder.getRudderAngle();
+}
 
 // Compute a simplified keel force
-glm::vec2 Boat::computeKeelForce() {
-    // Step 1: Compute speed and relative flow in body frame
-    // Assuming velocity is already in boat’s body frame (surge, sway)
-    double u = velocity.x;  // Surge component along boat's axis
-    double v = velocity.y;  // Sway component perpendicular to boat's axis
-    double speed = std::sqrt(u*u + v*v);
+glm::vec2 Boat::computeKeelForce(double angleOfAttack)
+{
 
-    // Step 2: Calculate angle of attack at the keel
-    double angleOfAttack = std::atan2(v, u); // relative to boat's forward axis
-
-    // Step 3: Compute lift and drag using the angle of attack
-    double CL = 0.5 * std::sin(2 * angleOfAttack); // placeholder formula
-    double CD = 0.1 + 0.5 * std::sin(angleOfAttack) * std::sin(angleOfAttack); // placeholder
-
-    double lift = 0.5 * waterDensity * speed * speed * keelArea * CL;
-    double drag = 0.5 * waterDensity * speed * speed * keelArea * CD;
-
-    // Assuming:
-    // - drag acts opposite to flow (along negative surge axis),
-    // - lift acts perpendicular to flow (lateral force).
-    // Convert these forces back into boat’s frame if necessary.
-    // Here we assume simplified directions:
-    return glm::vec2(-drag, -lift);
+    return keel.computeWForce(velocity, angleOfAttack, waterDensity);
 }
 
 
 // Compute a simplified hull force (e.g., drag opposing forward motion)
-glm::vec2 Boat::computeHullForce() {
-    double speed = std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
-    // Assume hull drag acts opposite to velocity vector
-    double hullDragCoefficient = 0.5;
-    glm::vec2 dragForce = static_cast<float>(-hullDragCoefficient * 0.5 * waterDensity * speed )* velocity;
-    return dragForce;
+glm::vec2 Boat::computeHullForce()
+{
+    return hull.getForce();
 }
 
 
+void Boat::computeForces(const glm::vec2 &wrelativeVelocity,
+                         double wdensity,
+                         const glm::vec2 &arelativeVelocity,
+                         double adensity)
+{
 
+    auto wAOA = std::atan2(wrelativeVelocity.y, wrelativeVelocity.x);
+    auto aAOA = std::atan2(arelativeVelocity.y, arelativeVelocity.x);
+
+    std::vector<std::future<void>> futures;
+
+    for (const auto &obj : surfaces)
+    {
+        // Launch computation asynchronously
+        futures.push_back(
+            std::async(std::launch::async,
+                       [obj, &wrelativeVelocity, wdensity, &arelativeVelocity, adensity, wAOA, aAOA] {
+                           obj->computeForce(wrelativeVelocity, arelativeVelocity, adensity, wdensity, wAOA, aAOA);
+                       }));
+    }
+    // Wait for all computations to complete
+    for (auto &f : futures)
+    {
+        f.get();
+    }
+}
+
+
+glm::vec2 Boat::computeTotalForce()
+{
+    glm::vec2 totalForce{0.0f, 0.0f};
+    for (const auto &obj : surfaces)
+    {
+        totalForce += obj->getForce();
+    }
+    return totalForce;
+}
+
+
+float crossProduct(const glm::vec2 &a, const glm::vec2 &b)
+{
+    return a.x * b.y - a.y * b.x;
+}
+double Boat::computeMomentz()
+{
+    double totalForce = 0.0;
+    for (const auto &obj : surfaces)
+    {
+        totalForce += crossProduct(obj->getCEOtoCOMB(), obj->getForce());
+    }
+    return totalForce;
+}
 // Update boat state over time step dt
-void Boat::update(double dt) {
+void Boat::update(double dt)
+{
     // Compute forces
-    glm::vec2 F_rudder = computeRudderForce();
-    glm::vec2 F_keel = computeKeelForce();
-    glm::vec2 F_hull = computeHullForce();
 
-    // Sum forces in boat frame
-    glm::vec2 totalForce = F_rudder + F_keel + F_hull + glm::vec2(motorForce, 0.0);
+
+    //FIXME: magic wind
+
+    auto worldWind = glm::vec2(0.0f, 5.0f);
+
+    auto relativeWind = rotateVector(worldWind, yaw);
+
+    //std::cout << "relative wind: " << (velocity).x << " " << (velocity).y << std::endl;
+    computeForces(velocity, waterDensity, velocity + relativeWind, airDensity);
+
+    double angleOfAttack = std::atan2(velocity.y, velocity.x); // relative to boat's forward axis
+    glm::vec2 totalForce = computeTotalForce() + glm::vec2(motorForce, 0.0);
 
     // Compute linear acceleration in boat frame
     glm::vec2 acceleration = totalForce / static_cast<float>(mass);
@@ -127,12 +185,12 @@ void Boat::update(double dt) {
     // Update linear velocity using Euler integration
     velocity += acceleration * static_cast<float>(dt);
 
-    
+
     // Compute yaw moment contributions from rudder and keel
-    momentZ = F_rudder.y * distanceRudderToCG + F_keel.y * distanceKeelToCG;
+    momentZ = computeMomentz();
 
     // Introduce yaw damping
-    double yawDampingCoefficient =300.0;
+    double yawDampingCoefficient = 200.0;
     double dampingMoment = -yawDampingCoefficient * yawRate;
 
     // Total yaw moment including damping
@@ -140,8 +198,6 @@ void Boat::update(double dt) {
 
     // Compute angular acceleration considering damping
     double angularAcc = momentZ_total / inertiaZ;
-
-    
 
 
     // Update yaw rate and yaw angle with damping included
@@ -152,9 +208,16 @@ void Boat::update(double dt) {
     // Update position: transform velocity from body to world coordinates based on yaw
     float cosYaw = std::cos(yaw);
     float sinYaw = std::sin(yaw);
-    glm::vec2 worldVelocity(
-            velocity.x * cosYaw - velocity.y * sinYaw,
-            velocity.x * sinYaw + velocity.y * cosYaw
-    );
+    glm::vec2 worldVelocity(velocity.x * cosYaw - velocity.y * sinYaw, velocity.x * sinYaw + velocity.y * cosYaw);
     position += worldVelocity * static_cast<float>(dt);
+}
+
+void Boat::sailIncrement(double dt)
+{
+    sail.incrementAngle(dt);
+}
+
+void Boat::sailDecrement(double dt)
+{
+    sail.decrementAngle(dt);
 }

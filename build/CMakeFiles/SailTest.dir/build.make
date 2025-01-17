@@ -97,22 +97,86 @@ CMakeFiles/SailTest.dir/src/navigation/boat.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SailTest.dir/src/navigation/boat.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marinph/PG/Sailtest/src/navigation/boat.cpp -o CMakeFiles/SailTest.dir/src/navigation/boat.cpp.s
 
+CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o: CMakeFiles/SailTest.dir/flags.make
+CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o: /home/marinph/PG/Sailtest/src/navigation/rudder.cpp
+CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o: CMakeFiles/SailTest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marinph/PG/Sailtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o -MF CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o.d -o CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/rudder.cpp
+
+CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marinph/PG/Sailtest/src/navigation/rudder.cpp > CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.i
+
+CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marinph/PG/Sailtest/src/navigation/rudder.cpp -o CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.s
+
+CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o: CMakeFiles/SailTest.dir/flags.make
+CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o: /home/marinph/PG/Sailtest/src/navigation/keel.cpp
+CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o: CMakeFiles/SailTest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marinph/PG/Sailtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o -MF CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o.d -o CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/keel.cpp
+
+CMakeFiles/SailTest.dir/src/navigation/keel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SailTest.dir/src/navigation/keel.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marinph/PG/Sailtest/src/navigation/keel.cpp > CMakeFiles/SailTest.dir/src/navigation/keel.cpp.i
+
+CMakeFiles/SailTest.dir/src/navigation/keel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SailTest.dir/src/navigation/keel.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marinph/PG/Sailtest/src/navigation/keel.cpp -o CMakeFiles/SailTest.dir/src/navigation/keel.cpp.s
+
+CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o: CMakeFiles/SailTest.dir/flags.make
+CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o: /home/marinph/PG/Sailtest/src/navigation/hull.cpp
+CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o: CMakeFiles/SailTest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marinph/PG/Sailtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o -MF CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o.d -o CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/hull.cpp
+
+CMakeFiles/SailTest.dir/src/navigation/hull.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SailTest.dir/src/navigation/hull.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marinph/PG/Sailtest/src/navigation/hull.cpp > CMakeFiles/SailTest.dir/src/navigation/hull.cpp.i
+
+CMakeFiles/SailTest.dir/src/navigation/hull.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SailTest.dir/src/navigation/hull.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marinph/PG/Sailtest/src/navigation/hull.cpp -o CMakeFiles/SailTest.dir/src/navigation/hull.cpp.s
+
+CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o: CMakeFiles/SailTest.dir/flags.make
+CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o: /home/marinph/PG/Sailtest/src/navigation/sail.cpp
+CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o: CMakeFiles/SailTest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marinph/PG/Sailtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o -MF CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o.d -o CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/sail.cpp
+
+CMakeFiles/SailTest.dir/src/navigation/sail.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SailTest.dir/src/navigation/sail.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marinph/PG/Sailtest/src/navigation/sail.cpp > CMakeFiles/SailTest.dir/src/navigation/sail.cpp.i
+
+CMakeFiles/SailTest.dir/src/navigation/sail.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SailTest.dir/src/navigation/sail.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marinph/PG/Sailtest/src/navigation/sail.cpp -o CMakeFiles/SailTest.dir/src/navigation/sail.cpp.s
+
 # Object files for target SailTest
 SailTest_OBJECTS = \
 "CMakeFiles/SailTest.dir/main.cpp.o" \
-"CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o"
+"CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o" \
+"CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o" \
+"CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o" \
+"CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o" \
+"CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o"
 
 # External object files for target SailTest
 SailTest_EXTERNAL_OBJECTS =
 
 SailTest: CMakeFiles/SailTest.dir/main.cpp.o
 SailTest: CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o
+SailTest: CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o
+SailTest: CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o
+SailTest: CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o
+SailTest: CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o
 SailTest: CMakeFiles/SailTest.dir/build.make
 SailTest: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1
 SailTest: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1
 SailTest: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
 SailTest: CMakeFiles/SailTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/marinph/PG/Sailtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SailTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/marinph/PG/Sailtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable SailTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SailTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

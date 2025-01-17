@@ -1,14 +1,38 @@
 [
 {
   "directory": "/home/marinph/PG/Sailtest/build",
-  "command": "/usr/bin/g++  -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation -g -std=gnu++17 -o CMakeFiles/SailTest.dir/main.cpp.o -c /home/marinph/PG/Sailtest/main.cpp",
+  "command": "/usr/bin/g++  -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation -g -std=gnu++20 -o CMakeFiles/SailTest.dir/main.cpp.o -c /home/marinph/PG/Sailtest/main.cpp",
   "file": "/home/marinph/PG/Sailtest/main.cpp",
   "output": "CMakeFiles/SailTest.dir/main.cpp.o"
 },
 {
   "directory": "/home/marinph/PG/Sailtest/build",
-  "command": "/usr/bin/g++  -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation -g -std=gnu++17 -o CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/boat.cpp",
+  "command": "/usr/bin/g++  -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation -g -std=gnu++20 -o CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/boat.cpp",
   "file": "/home/marinph/PG/Sailtest/src/navigation/boat.cpp",
   "output": "CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o"
+},
+{
+  "directory": "/home/marinph/PG/Sailtest/build",
+  "command": "/usr/bin/g++  -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation -g -std=gnu++20 -o CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/rudder.cpp",
+  "file": "/home/marinph/PG/Sailtest/src/navigation/rudder.cpp",
+  "output": "CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o"
+},
+{
+  "directory": "/home/marinph/PG/Sailtest/build",
+  "command": "/usr/bin/g++  -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation -g -std=gnu++20 -o CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/keel.cpp",
+  "file": "/home/marinph/PG/Sailtest/src/navigation/keel.cpp",
+  "output": "CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o"
+},
+{
+  "directory": "/home/marinph/PG/Sailtest/build",
+  "command": "/usr/bin/g++  -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation -g -std=gnu++20 -o CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/hull.cpp",
+  "file": "/home/marinph/PG/Sailtest/src/navigation/hull.cpp",
+  "output": "CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o"
+},
+{
+  "directory": "/home/marinph/PG/Sailtest/build",
+  "command": "/usr/bin/g++  -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation -g -std=gnu++20 -o CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o -c /home/marinph/PG/Sailtest/src/navigation/sail.cpp",
+  "file": "/home/marinph/PG/Sailtest/src/navigation/sail.cpp",
+  "output": "CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o"
 }
 ]
