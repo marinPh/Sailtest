@@ -48,7 +48,7 @@ Boat();
 
 
     // Update function
-    void update(double dt);
+    void update(double dt, glm::vec2& worldWind);
 
     void motorIncrement(double dt);
     void motorDecrement(double dt);
@@ -74,6 +74,8 @@ Boat();
     glm::vec2 computeKeelForce(double angleOfAttack);
 
     glm::vec2 computeHullForce();
+
+    glm::vec2 computeSailForce();
 
     void computeForces( const glm::vec2& wrelativeVelocity, double wdensity,const glm::vec2& arelativeVelocity, double adensity);
     glm::vec2 computeTotalForce();

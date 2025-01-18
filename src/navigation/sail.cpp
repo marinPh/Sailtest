@@ -1,6 +1,7 @@
 #include "sail.h"
 #include <cmath> // For M_PI
 #include <algorithm> // For std::clamp
+#include <iostream>
 
 Sail::Sail(glm::vec2 position) : position(position)
 {
@@ -23,29 +24,31 @@ glm::vec2 Sail::computeAForce(const glm::vec2 &relativeVelocity, double angleOfA
     // Simplified coefficients (replace with better models as needed)
     //implement a turbulence model
 
-    double CL = M_PI * std::sin(2 * AOA);
-    double CD = 0.1 + 0.5 * std::sin(AOA) * std::sin(AOA);
+    double CL = 0.5 *M_PI * std::sin(2 * AOA);
+    double CD = 0.1 + 0.5 * std::sin(AOA) * std::sin(AOA)*2.1;
+    std::cout << "CL: " << CL << " CD: " << CD << std::endl;
 
-    if (angleOfAttack > criticalAngle)
-    {
-        CL *= 0.5;
-    }
-
-    double lift = 0.5 * density * speed * speed * Area * CL;
+    //implement use of Reynold's number
+    double lift =  density * speed * speed * Area * CL;
     double drag = 0.5 * density * speed * speed * Area * CD;
 
     auto relativeTowind = glm::vec2(-drag, lift);
 
+    std ::cout << "relative to wind: " << relativeTowind.x << " " << relativeTowind.y<< "from -> " << glm::degrees(AOA) << "  "<< glm::degrees(angleOfAttack) << std::endl;
+    
     //rotate the force to the boat frame
 
-    auto windDir = std::atan2(relativeTowind.y, relativeTowind.x);
-    float cosYaw = std::cos(windDir);
-    float sinYaw = std::sin(windDir);
+    
+    float cosYaw = std::cos(angleOfAttack);
+    float sinYaw = std::sin(angleOfAttack);
 
     glm::vec2 worldVelocity(relativeTowind.x * cosYaw - relativeTowind.y * sinYaw,
                             relativeTowind.x * sinYaw + relativeTowind.y * cosYaw);
+    std ::cout << "relative to boat: " << worldVelocity.x << " " << worldVelocity.y<< std::endl;
 
     // For simplicity, assume drag acts along -x and lift along y-axis of boat frame.
+
+    // negated because the force is opposite to the velocity
     return worldVelocity;
 }
 

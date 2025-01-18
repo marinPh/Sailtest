@@ -13,7 +13,7 @@ Boat::Boat() : rudder(glm::vec2(-2.0f, 0.0f)), keel(glm::vec2(2.0f, 0.0f)), hull
     surfaces.push_back(&rudder);
     surfaces.push_back(&keel);
     surfaces.push_back(&hull);
-    //surfaces.push_back(&sail);
+    surfaces.push_back(&sail);
 }
 
 glm::vec2 rotateVector(const glm::vec2 &v, float yaw)
@@ -108,6 +108,10 @@ glm::vec2 Boat::computeHullForce()
     return hull.getForce();
 }
 
+glm::vec2 Boat::computeSailForce(){
+    return sail.getForce();
+}
+
 
 void Boat::computeForces(const glm::vec2 &wrelativeVelocity,
                          double wdensity,
@@ -117,6 +121,8 @@ void Boat::computeForces(const glm::vec2 &wrelativeVelocity,
 
     auto wAOA = std::atan2(wrelativeVelocity.y, wrelativeVelocity.x);
     auto aAOA = std::atan2(arelativeVelocity.y, arelativeVelocity.x);
+
+    //sail.computeForce(wrelativeVelocity, arelativeVelocity, adensity, wdensity, wAOA, aAOA);
 
     std::vector<std::future<void>> futures;
 
@@ -129,6 +135,7 @@ void Boat::computeForces(const glm::vec2 &wrelativeVelocity,
                            obj->computeForce(wrelativeVelocity, arelativeVelocity, adensity, wdensity, wAOA, aAOA);
                        }));
     }
+    
     // Wait for all computations to complete
     for (auto &f : futures)
     {
@@ -162,19 +169,21 @@ double Boat::computeMomentz()
     return totalForce;
 }
 // Update boat state over time step dt
-void Boat::update(double dt)
+void Boat::update(double dt, glm ::vec2& worldWind)
 {
     // Compute forces
 
 
     //FIXME: magic wind
 
-    auto worldWind = glm::vec2(0.0f, 5.0f);
+    
 
     auto relativeWind = rotateVector(worldWind, yaw);
 
+    //std :: cout << "relative wind: " << relativeWind.x << " " << relativeWind.y << std::endl;
+
     //std::cout << "relative wind: " << (velocity).x << " " << (velocity).y << std::endl;
-    computeForces(velocity, waterDensity, velocity + relativeWind, airDensity);
+    computeForces(velocity, waterDensity, velocity - relativeWind, airDensity);
 
     double angleOfAttack = std::atan2(velocity.y, velocity.x); // relative to boat's forward axis
     glm::vec2 totalForce = computeTotalForce() + glm::vec2(motorForce, 0.0);

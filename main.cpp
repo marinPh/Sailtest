@@ -133,7 +133,7 @@ int main()
 
 
 
-
+auto worldWind = glm::vec2(0.0f, 3.0f);
     // Main loop
     while (window.isOpen())
     {
@@ -148,7 +148,8 @@ int main()
         }
 
         sf::Time dt = clock.restart();
-        boatO.update(dt.asSeconds());
+
+        boatO.update(dt.asSeconds(),worldWind);
 
         auto vec = boatO.GetWVec();
 
@@ -216,17 +217,15 @@ int main()
         
         // Compute starting position at the back of the icon
         sf::Vector2f backStartPos = boatPos + rotatedBackOffset;
+        double rudderAngle = boatO.getRudderPosition(); // in  radians
+        glm::vec2 vecA  = boatO.computeSailForce();
         
-        glm::vec2 vecA  = boatO.computeKeelForce(AoT) ; // define or obtain this vector
-        glm::vec2 vecB = boatO.computeRudderForce(AoT); // define or obtain this vector
+        glm::vec2 vecB = glm::vec2(glm::cos(rudderAngle), glm::sin(rudderAngle))*50.0f;
+        //glm::vec2 vecB = boatO.computeRudderForce(AoT);
 
         sf::Vector2f vecF = sf::Vector2f(boatO.getSailEnd().x*100, boatO.getSailEnd().y*100);
         sf::Vector2f vecS = sf::Vector2f(boatO.GetVec().x, boatO.GetVec().y);
-
-        auto worldWind = glm::vec2(0.0f, 10.0f);
-
-        auto relativeWind = boatO.computeHullForce();
-        auto rotatedWind = rotateVector(sf::Vector2f(relativeWind.x, relativeWind.y), yaw);
+        sf::Vector2f wind = sf::Vector2f(worldWind.x, worldWind.y);
 
         sf::Vector2f rotatedVecA = rotateVector(sf::Vector2f(vecA.x, vecA.y), yaw);
         sf::Vector2f rotatedVecB = rotateVector(sf::Vector2f(vecB.x, vecB.y), yaw);
@@ -253,7 +252,9 @@ int main()
         sf::Vector2f endPosS = startPosS + rotatedVecS;
 
         sf::Vector2f startPosWind = boatPos;
-        sf::Vector2f endPosWind = startPosWind + rotatedWind* 10.0f;
+        sf::Vector2f endPosWind = startPosWind + wind* 10.0f;
+
+
 
 
         // Draw the vectors

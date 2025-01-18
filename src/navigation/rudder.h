@@ -46,7 +46,7 @@ public:
     void computeForce(const glm::vec2& wrelativeVelocity,const glm::vec2& arelativeVelocity, double adensity, double wdensity,double wAOA,double aAOA) ;
     const glm::vec2& getForce() const ;
     private:
-        double rudderAngle = 0.0;       // radians
+        double rudderAngle = M_PI;       // radians
         double Area = 1.0; // m^2
         glm::vec2 position{0.0f, 0.0f}; // coordinates on the boat
 

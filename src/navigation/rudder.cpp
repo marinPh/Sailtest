@@ -3,7 +3,7 @@
 #include <iostream>
 Rudder::Rudder(glm::vec2 position) : position(position) {}
 
-
+//TODO: revoir tt les calculs d'angle
 
 glm::vec2 Rudder::computeWForce(const glm::vec2& relativeVelocity, double angleOfAttack, double density) const {
     double speed = std::sqrt(relativeVelocity.x * relativeVelocity.x + relativeVelocity.y * relativeVelocity.y);
@@ -12,13 +12,13 @@ glm::vec2 Rudder::computeWForce(const glm::vec2& relativeVelocity, double angleO
 
     int sign = (relativeVelocity.x > 0) ? 1 : -1;
 
-    auto AOT = angleOfAttack + rudderAngle;
+    auto AOT =  rudderAngle -angleOfAttack ;
 
 
     // Simplified coefficients (replace with better models as needed)
     double CL = 0.5 * std::sin(2 * rudderAngle);
     double CD = 0.1 + 0.5 * std::sin(rudderAngle) * std::sin(rudderAngle);
-    //std::cout << "CL: " << CL << " CD: " << CD << std::endl;
+   
 
     double lift = 0.5 * density * speed * speed * Area * CL;
     double dragForce = 0.5 * density * speed * speed * Area * CD* sign;
@@ -26,14 +26,17 @@ glm::vec2 Rudder::computeWForce(const glm::vec2& relativeVelocity, double angleO
     
 
    
-    auto drag =  glm::vec2(-dragForce, -lift);
+    auto drag =  glm::vec2(-dragForce, lift);
 
     //rotate the force to the boat frame
 
     float cosYaw = std::cos(angleOfAttack);
     float sinYaw = std::sin(angleOfAttack);
+
+
+
     auto vec = glm::vec2(drag.x * cosYaw - drag.y * sinYaw, drag.x * sinYaw + drag.y * cosYaw);
-    std::cout << "rudder force: " << vec.x << " " << vec.y << std::endl;
+    //std::cout << "rudder force: " << vec.x << " " << vec.y << std::endl;
     return  vec;
 }
 
@@ -72,11 +75,11 @@ void Rudder::setRudderAngle(double angle){
 }
 void Rudder::incrementRudderAngle(double delta){
     rudderAngle += delta;
-    rudderAngle = std::clamp(rudderAngle, -1.2,1.2); // Clamp between -60 and 60 degrees
+    rudderAngle = std::clamp(rudderAngle, 2.0944,2*2.0944); // Clamp between -60 and 60 degrees
 }
 void Rudder::decrementRudderAngle(double delta){
     rudderAngle -= delta;
-    rudderAngle = std::clamp(rudderAngle, -1.2,1.2); // Clamp between -60 and 60 degrees
+    rudderAngle = std::clamp(rudderAngle, 2.0944,2*2.0944); // Clamp between -60 and 60 degrees
 }
 void Rudder::computeForce(
     const glm::vec2& wrelativeVelocity,
@@ -85,7 +88,7 @@ void Rudder::computeForce(
     double wdensity,
     double wAOA,
     double aAOA)  {
-        this->force = computeWForce(wrelativeVelocity, wAOA, wdensity) + computeAForce(arelativeVelocity, aAOA, adensity);
+        this->force = computeWForce(wrelativeVelocity, wAOA, wdensity);
 }
     
     const glm::vec2& Rudder

@@ -38,7 +38,7 @@ public:
         double base = 1.0; // meters
         glm::vec2 position{0.0f, 0.0f}; // coordinates on the boat
         double Area = 2.0; // m^2
-        double angleToBoat = 0.0; // radians
+        double angleToBoat = M_PI; // radians
         double criticalAngle = 18.0; // degrees
         double centerOfEffortToMast = 0.5; // meters 
         double maxAngle = 90.0; // degrees
