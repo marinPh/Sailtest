@@ -21,6 +21,8 @@ glm::vec2 Sail::computeAForce(const glm::vec2 &relativeVelocity, double angleOfA
 
     double AOA = angleToBoat - angleOfAttack; // simplified assumption
 
+    
+
     // Simplified coefficients (replace with better models as needed)
     //implement a turbulence model
 
