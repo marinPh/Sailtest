@@ -119,8 +119,12 @@ void Boat::computeForces(const glm::vec2 &wrelativeVelocity,
                          double adensity)
 {
 
-    auto wAOA = std::atan2(wrelativeVelocity.y, wrelativeVelocity.x);
-    auto aAOA = std::atan2(arelativeVelocity.y, arelativeVelocity.x);
+    double wAOA = std::atan2(wrelativeVelocity.y, wrelativeVelocity.x);
+    double aAOA = std::atan2(arelativeVelocity.y, arelativeVelocity.x);
+
+    std :: cout << "AOA: " << glm::degrees(wAOA) << " " <<glm::degrees( aAOA) << std::endl;
+ 
+
 
     //sail.computeForce(wrelativeVelocity, arelativeVelocity, adensity, wdensity, wAOA, aAOA);
 
@@ -178,14 +182,16 @@ void Boat::update(double dt, glm ::vec2& worldWind)
 
     
 
-    auto relativeWind = rotateVector(worldWind, yaw);
+    auto relativeWind = rotateVector(worldWind, -yaw);
+    std::cout << "relative wind: " << relativeWind.x << " " << relativeWind.y << std::endl;
+
 
     //std :: cout << "relative wind: " << relativeWind.x << " " << relativeWind.y << std::endl;
 
     //std::cout << "relative wind: " << (velocity).x << " " << (velocity).y << std::endl;
     computeForces(velocity, waterDensity, velocity - relativeWind, airDensity);
 
-    double angleOfAttack = std::atan2(velocity.y, velocity.x); // relative to boat's forward axis
+    //double angleOfAttack = std::atan2(velocity.y, velocity.x); // relative to boat's forward axis
     glm::vec2 totalForce = computeTotalForce() + glm::vec2(motorForce, 0.0);
 
     // Compute linear acceleration in boat frame
@@ -194,9 +200,12 @@ void Boat::update(double dt, glm ::vec2& worldWind)
     // Update linear velocity using Euler integration
     velocity += acceleration * static_cast<float>(dt);
 
+    //velocity = glm::vec2(0.0f,0.0f);
+
 
     // Compute yaw moment contributions from rudder and keel
     momentZ = computeMomentz();
+    //momentZ =0.0;
 
     // Introduce yaw damping
     double yawDampingCoefficient = 200.0;

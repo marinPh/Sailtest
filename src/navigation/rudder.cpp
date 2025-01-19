@@ -6,6 +6,7 @@ Rudder::Rudder(glm::vec2 position) : position(position) {}
 //TODO: revoir tt les calculs d'angle
 
 glm::vec2 Rudder::computeWForce(const glm::vec2& relativeVelocity, double angleOfAttack, double density) const {
+    //TODO: must add yawrate so we can get other components of the velocity
     double speed = std::sqrt(relativeVelocity.x * relativeVelocity.x + relativeVelocity.y * relativeVelocity.y);
     //TODO: must be more precise
     // simplified assumption

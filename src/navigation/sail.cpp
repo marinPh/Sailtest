@@ -27,7 +27,7 @@ glm::vec2 Sail::computeAForce(const glm::vec2 &relativeVelocity, double angleOfA
     //implement a turbulence model
 
     double CL = 0.5 *M_PI * std::sin(2 * AOA);
-    double CD = 0.1 + 0.5 * std::sin(AOA) * std::sin(AOA)*2.1;
+    double CD = 0.1 + std::sin(AOA) * std::sin(AOA)*4;
     std::cout << "CL: " << CL << " CD: " << CD << std::endl;
 
     //implement use of Reynold's number
@@ -35,8 +35,8 @@ glm::vec2 Sail::computeAForce(const glm::vec2 &relativeVelocity, double angleOfA
     double drag = 0.5 * density * speed * speed * Area * CD;
 
     auto relativeTowind = glm::vec2(-drag, lift);
-
-    std ::cout << "relative to wind: " << relativeTowind.x << " " << relativeTowind.y<< "from -> " << glm::degrees(AOA) << "  "<< glm::degrees(angleOfAttack) << std::endl;
+    std ::cout << "relative vel: " << relativeVelocity.x << " " << relativeVelocity.y<<  std::endl;
+    std ::cout << "relative to wind: " << relativeTowind.x << " " << relativeTowind.y<< "from -> " << glm::degrees(AOA) << "="<< glm::degrees(angleToBoat)  << " + "<< glm::degrees(angleOfAttack) << std::endl;
     
     //rotate the force to the boat frame
 
@@ -46,7 +46,7 @@ glm::vec2 Sail::computeAForce(const glm::vec2 &relativeVelocity, double angleOfA
 
     glm::vec2 worldVelocity(relativeTowind.x * cosYaw - relativeTowind.y * sinYaw,
                             relativeTowind.x * sinYaw + relativeTowind.y * cosYaw);
-    std ::cout << "relative to boat: " << worldVelocity.x << " " << worldVelocity.y<< std::endl;
+    std ::cout << "relative to boat: " << worldVelocity.x << " " << worldVelocity.y<< " ppff "<< glm::degrees(std::atan2(worldVelocity.y,worldVelocity.x)) << std::endl;
 
     // For simplicity, assume drag acts along -x and lift along y-axis of boat frame.
 

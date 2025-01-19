@@ -21,6 +21,7 @@ glm::vec2 Keel::computeWForce(const glm::vec2 &relativeVelocity, double angleOfA
     // Step 3: Compute lift and drag using the angle of attack
     double CL = 0.5 * std::sin(2 * angleOfAttack);                             // placeholder formula
     double CD = 0.1 + 0.5 * std::sin(angleOfAttack) * std::sin(angleOfAttack); // placeholder
+    // std::cout << "of keel"<< 0.1 << " " << 0.5 << " " << std::sin(angleOfAttack) << "=" << CD << std::endl;
 
 
 
@@ -36,7 +37,7 @@ glm::vec2 Keel::computeWForce(const glm::vec2 &relativeVelocity, double angleOfA
     //should be 
 
     //apply the force on velocity vector not on boat frame
-    //determin why works in negative
+    //FIXME: y is lift negated?
     auto vec = glm::vec2(-drag, -lift);
 
     glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), static_cast<float>(angleOfAttack), glm::vec3(0.0f, 0.0f, 1.0f));

@@ -15,6 +15,7 @@ sf::Vector2f rotateVector(const sf::Vector2f& v, float degrees) {
                         v.x * sinA + v.y * cosA);
 }
 
+
 void drawVector(sf::RenderWindow& window, const sf::Vector2f& start, const sf::Vector2f& end, const sf::Color& color) {
     sf::Vertex line[] = {
         sf::Vertex(start, color),
