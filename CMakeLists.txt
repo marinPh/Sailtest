@@ -23,12 +23,14 @@ set(SOURCES
 
 # Add the executable
 add_executable(${PROJECT_NAME} ${SOURCES})
+add_executable(Sphere src/sphere.cpp)  # Add Sphere executable
 
 # Add include directories for headers
 target_include_directories(${PROJECT_NAME} PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/src/navigation
 )
+target_link_libraries(Sphere PRIVATE sfml-window sfml-system GL GLU  sfml-graphics sfml-window sfml-system)
 
 # Link SFML libraries to the executable
 target_link_libraries(${PROJECT_NAME}
