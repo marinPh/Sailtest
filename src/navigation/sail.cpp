@@ -27,7 +27,7 @@ glm::vec2 Sail::computeAForce(const glm::vec2 &relativeVelocity, double angleOfA
     //implement a turbulence model
 
     double CL = 0.5 *M_PI * std::sin(2 * AOA);
-    double CD = 0.1 + std::sin(AOA) * std::sin(AOA)*4;
+    double CD = 0.1 + std::sin(AOA) * std::sin(AOA)*2;
     std::cout << "CL: " << CL << " CD: " << CD << std::endl;
 
     //implement use of Reynold's number
