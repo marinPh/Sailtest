@@ -87,7 +87,7 @@ int main()
     const int SCREEN_WIDTH = 800;
     const int SCREEN_HEIGHT = 600;
 
-    Boat boatO = Boat();
+    
     // Create the SFML window
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Moving Boat");
 
@@ -104,6 +104,7 @@ int main()
 
     // Create two sprites using the same texture
     sf::Sprite boat1(boatTexture);
+    Boat boatO = Boat(boat1,glm::vec2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 
     // Set initial positions
     boat1.setPosition(window.getSize().x / 2, window.getSize().y / 2);
@@ -170,7 +171,6 @@ auto worldWind = glm::vec2(0.0f, 3.0f);
         auto angularVec = metaData(font,"angularAcce = " + std::to_string((boatO.yawRate)) , 5.f, 300.f);
         auto velw = metaData(font, "worldvel: " + std::to_string(boatO.GetWVec().x) + "," + std::to_string(boatO.GetWVec().y), 5.f, 200.f);
        
-
         // Update boat1's position along the x-axis
         boat1.move(vec.x, vec.y);
         boat1.setRotation(boatO.getDirection()+90);

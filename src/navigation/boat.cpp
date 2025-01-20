@@ -8,13 +8,20 @@
 #include "sail.h"
 // Compute a simplified rudder force based on rudder angle and boat speed.
 
-Boat::Boat() : rudder(glm::vec2(-2.0f, 0.0f)), keel(glm::vec2(2.0f, 0.0f)), hull(), sail(glm::vec2(0.0f, 0.0f))
+Boat::Boat(sf::Sprite sprite,glm::vec2 startingPos) : rudder(glm::vec2(-2.0f, 0.0f)), keel(glm::vec2(2.0f, 0.0f)), hull(), sail(glm::vec2(0.0f, 0.0f)),sprite(sprite),position(startingPos)
 {
+    // Initialize boat surfaces
     surfaces.push_back(&rudder);
     surfaces.push_back(&keel);
     surfaces.push_back(&hull);
     surfaces.push_back(&sail);
 }
+
+sf::Vector2f Boat::getPosition()
+{
+    return sf::Vector2f(position.x, position.y);
+}
+
 
 glm::vec2 rotateVector(const glm::vec2 &v, float yaw)
 {
@@ -220,7 +227,12 @@ void Boat::update(double dt, glm ::vec2& worldWind)
 
     // Update yaw rate and yaw angle with damping included
     yawRate += angularAcc * dt;
+    //yaw is between -pi and pi
     yaw += yawRate * dt;
+    yaw = std::fmod(yaw + M_PI, 2.0 * M_PI) - M_PI;
+
+
+
 
 
     // Update position: transform velocity from body to world coordinates based on yaw
@@ -238,4 +250,14 @@ void Boat::sailIncrement(double dt)
 void Boat::sailDecrement(double dt)
 {
     sail.decrementAngle(dt);
+}
+
+void Boat::draw(sf::RenderWindow& window)
+{
+
+    sprite.setPosition(position.x, position.y);
+    sprite.setRotation(getDirection() + 90.f); 
+
+    window.draw(sprite);
+
 }
