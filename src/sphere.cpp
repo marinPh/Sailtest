@@ -6,6 +6,38 @@
 #include <iostream>
 #include <vector>
 
+void setupSphereView(float aspect) {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(45.f, aspect, 0.1f, 100.f);  // Perspective for sphere
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(0, 0, 4,  0, 0, 0,  0, 1, 0);
+}
+
+void setupPlanView(float aspect, float lat, float lon) {
+    // Set up an orthographic projection for a plan view centered on (lat, lon).
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    float viewHeight = 2.0f; // Adjust for desired zoom level
+    float viewWidth = viewHeight * aspect;
+    glOrtho(-viewWidth/2, viewWidth/2, -viewHeight/2, viewHeight/2, 0.1f, 100.f);
+
+    // Compute center position on the sphere based on (lat, lon)
+    float radius = 1.0f;
+    float centerX = radius * cos(lat) * cos(lon);
+    float centerY = radius * sin(lat);
+    float centerZ = radius * cos(lat) * sin(lon);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    // Position the camera close to and above the point, looking directly at it.
+    float cameraDistance = 0.5f; // How close the camera is to the surface
+    gluLookAt(centerX, centerY, centerZ + cameraDistance,
+              centerX, centerY, centerZ,
+              0, 1, 0);
+}
+
 int main()
 {
     sf::Window window(sf::VideoMode(800, 600),
@@ -107,6 +139,8 @@ int main()
                 lastMouseX = currentX;
                 lastMouseY = currentY;
             }
+
+            
         }
 
         // Clear buffers and set up camera

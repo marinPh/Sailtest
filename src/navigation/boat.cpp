@@ -8,9 +8,13 @@
 #include "sail.h"
 // Compute a simplified rudder force based on rudder angle and boat speed.
 
-Boat::Boat(sf::Sprite sprite,glm::vec2 startingPos) : rudder(glm::vec2(-2.0f, 0.0f)), keel(glm::vec2(2.0f, 0.0f)), hull(), sail(glm::vec2(0.0f, 0.0f)),sprite(sprite),position(startingPos)
+Boat::Boat(sf::Sprite& sprite,glm::vec2 startingPos) : rudder(glm::vec2(-2.0f, 0.0f)), keel(glm::vec2(2.0f, 0.0f)), hull(), sail(glm::vec2(0.0f, 0.0f)),sprite(sprite),position(startingPos)
 {
     // Initialize boat surfaces
+    sprite.setPosition(startingPos.x, startingPos.y);
+    sprite.scale(0.1, 0.1);
+    //sprite.setOrigin(startingPos.x, startingPos.y);
+    
     surfaces.push_back(&rudder);
     surfaces.push_back(&keel);
     surfaces.push_back(&hull);
@@ -239,7 +243,12 @@ void Boat::update(double dt, glm ::vec2& worldWind)
     float cosYaw = std::cos(yaw);
     float sinYaw = std::sin(yaw);
     glm::vec2 worldVelocity(velocity.x * cosYaw - velocity.y * sinYaw, velocity.x * sinYaw + velocity.y * cosYaw);
-    position += worldVelocity * static_cast<float>(dt);
+    position += worldVelocity ;
+    sprite.move(worldVelocity.x, worldVelocity.y);
+    std::cout << "position: " << position.x << " " << position.y << std::endl;
+    std::cout << "sprite pos: " << sprite.getPosition().x<< "  " << sprite.getPosition().y<< std::endl;
+
+    
 }
 
 void Boat::sailIncrement(double dt)
@@ -255,7 +264,7 @@ void Boat::sailDecrement(double dt)
 void Boat::draw(sf::RenderWindow& window)
 {
 
-    sprite.setPosition(position.x, position.y);
+    //sprite.setPosition(position.x, position.y);
     sprite.setRotation(getDirection() + 90.f); 
 
     window.draw(sprite);

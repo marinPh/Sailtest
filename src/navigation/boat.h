@@ -17,7 +17,7 @@
 class Boat
 {
 public:
-    Boat(sf::Sprite sprite,glm::vec2 startingPos);
+    Boat(sf::Sprite& sprite,glm::vec2 startingPos);
     // Physical properties
     double mass = 100.0;     // kg
     double inertiaZ = 500.0; //
@@ -85,7 +85,7 @@ public:
 
 private:
     double computeMomentz();
-    sf::Sprite sprite;
+    sf::Sprite& sprite;
 
     Rudder rudder;
     Keel keel;

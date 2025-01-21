@@ -103,15 +103,17 @@ int main()
     }
 
     // Create two sprites using the same texture
-    sf::Sprite boat1(boatTexture);
-    Boat boatO = Boat(boat1,glm::vec2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
+    sf::Sprite boatS(boatTexture);
+    boatS.setScale(0.5f, 0.5f);
+    boatS.setOrigin(boatS.getLocalBounds().width / 2, boatS.getLocalBounds().height / 2);
+    Boat boatO = Boat(boatS,glm::vec2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 
     // Set initial positions
-    boat1.setPosition(window.getSize().x / 2, window.getSize().y / 2);
-    boat1.setScale(0.5f, 0.5f);
-    boat1.setOrigin(boat1.getLocalBounds().width / 2, boat1.getLocalBounds().height / 2);
-    boat1.scale(0.1f, 0.1f);
-    boat1.setRotation(90.f);
+    //boat1.setPosition(window.getSize().x / 2, window.getSize().y / 2);
+    //
+    //
+    //boat1.scale(0.1f, 0.1f);
+    //boat1.setRotation(90.f);
 
 
     float boatSpeedX = 0.f;         // Speed of boat1 on the x-axis
@@ -172,10 +174,10 @@ auto worldWind = glm::vec2(0.0f, 3.0f);
         auto velw = metaData(font, "worldvel: " + std::to_string(boatO.GetWVec().x) + "," + std::to_string(boatO.GetWVec().y), 5.f, 200.f);
        
         // Update boat1's position along the x-axis
-        boat1.move(vec.x, vec.y);
-        boat1.setRotation(boatO.getDirection()+90);
+        //boat1.move(vec.x, vec.y);
+        //boat1.setRotation(boatO.getDirection()+90);
         // Center the view on boat1
-        view.setCenter(boat1.getPosition());
+        view.setCenter(boatO.getPosition());
         window.setView(view);
 
         // Clear the window with a white background
@@ -207,17 +209,17 @@ auto worldWind = glm::vec2(0.0f, 3.0f);
         }
 
         // Get boat's global position and rotation (yaw)
-        sf::Vector2f boatPos = boat1.getPosition();
-        float yaw = boat1.getRotation();  // Assuming sprite rotation matches boat's yaw
+        sf::Vector2f boatPos = boatO.getPosition();
+        float yaw = boatO.getDirection() + 90;  // Assuming sprite rotation matches boat's yaw
         
         // Local offset from center to back (assuming boat image points upward and back is downward)
-        sf::Vector2f localBackOffset(0.f, boat1.getLocalBounds().height / 2.f);
+        //sf::Vector2f localBackOffset(0.f, boat1.getLocalBounds().height / 2.f);
         
         // Rotate local back offset by boat's yaw to get world-space offset
-        sf::Vector2f rotatedBackOffset = rotateVector(localBackOffset, yaw);
+        //sf::Vector2f rotatedBackOffset = rotateVector(localBackOffset, yaw);
         
         // Compute starting position at the back of the icon
-        sf::Vector2f backStartPos = boatPos + rotatedBackOffset;
+        //sf::Vector2f backStartPos = boatPos + rotatedBackOffset;
         double rudderAngle = boatO.getRudderPosition(); // in  radians
         glm::vec2 vecA  = boatO.computeSailForce();
         
@@ -236,8 +238,6 @@ auto worldWind = glm::vec2(0.0f, 3.0f);
         //sf::Vector2f rotatedVecB = sf::Vector2f(vecB.x, vecB.y);
         //sf::Vector2f rotatedVecF = sf::Vector2f(boatO.motorForce, 0);
         //sf::Vector2f rotatedVecS = sf::Vector2f(boatO.GetVec().x, boatO.GetVec().y);
-        
-
 
         sf::Vector2f startPosA = boatPos; 
         sf::Vector2f endPosA = startPosA + rotatedVecA;
@@ -255,9 +255,6 @@ auto worldWind = glm::vec2(0.0f, 3.0f);
         sf::Vector2f startPosWind = boatPos;
         sf::Vector2f endPosWind = startPosWind + wind* 10.0f;
 
-
-
-
         // Draw the vectors
         drawVector(window, startPosA, endPosA, sf::Color::Red);
         drawVector(window, startPosB, endPosB, sf::Color::Blue);
@@ -266,14 +263,9 @@ auto worldWind = glm::vec2(0.0f, 3.0f);
         drawVector(window, startPosWind, endPosWind, sf::Color::Magenta);
         //drawSail(window, sf::Vector2f(0.f, 0.f), sf::Vector2f(boatO.getSailEnd().x, boatO.getSailEnd().y), sf::Color::Green, boatO, boatPos);
 
-
-
-
-
-
-
         // Draw both boat sprites on top of the background
-        window.draw(boat1);
+        //window.draw(boat1);
+        boatO.draw(window);
         window.setView(window.getDefaultView());
         window.draw(speedText);
         window.draw(frc);
