@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 #include "hydrosurface.h"
+#include <SFML/Graphics.hpp>
 
 /**
  * @brief 
@@ -19,6 +20,7 @@ public:
     glm::vec2 getCEOtoCOMB();
     void computeForce(const glm::vec2& wrelativeVelocity,const glm::vec2& arelativeVelocity, double adensity, double wdensity,double wAOA,double aAOA);
     const glm::vec2& getForce() const;
+    void draw(sf::RenderWindow& window,sf::Transform boatTransform,sf::Vector2f origin_point);
     
 
     private:

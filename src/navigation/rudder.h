@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 #include "hydrosurface.h"
+#include <SFML/Graphics.hpp>
 
 /**
  * @brief Abstract base class for hydrodynamic surfaces (e.g., keel, rudder, sail).
@@ -45,10 +46,11 @@ public:
     glm::vec2 getCEOtoCOMB() ; // get the distance between the center of effort and the center of mass of boat
     void computeForce(const glm::vec2& wrelativeVelocity,const glm::vec2& arelativeVelocity, double adensity, double wdensity,double wAOA,double aAOA) ;
     const glm::vec2& getForce() const ;
+    void draw(sf::RenderWindow& window,sf::Transform boatTransform,sf::Vector2f origin_point);
     private:
         double rudderAngle = M_PI;       // radians
         double Area = 1.0; // m^2
-        glm::vec2 position{0.0f, 0.0f}; // coordinates on the boat
+        glm::vec2 position{-2.0f, 0.0f}; // coordinates on the boat
 
         glm::vec2 CEOtoBack{-0.5f, 0.0f}; // coordinates on the boat
         glm::vec2 force{0.0f, 0.0f};

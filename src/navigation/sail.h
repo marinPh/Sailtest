@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 #include "hydrosurface.h"
+#include <SFML/Graphics.hpp>
 
 
 /**
@@ -30,8 +31,9 @@ public:
     const glm::vec2& getForce() const;
 
     double getAngle() const;
+    double getBase() const;
 
-    double getBase () const;
+    void draw(sf::RenderWindow& window, sf::Transform boatTransform,sf::Vector2f origin_point);
 
     private:
 

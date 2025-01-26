@@ -129,6 +129,32 @@ SailTest/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/build
 .PHONY : SailTest/fast
 
+#=============================================================================
+# Target rules for targets named Sphere
+
+# Build rule for target.
+Sphere: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Sphere
+.PHONY : Sphere
+
+# fast build rule for target.
+Sphere/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sphere.dir/build.make CMakeFiles/Sphere.dir/build
+.PHONY : Sphere/fast
+
+#=============================================================================
+# Target rules for targets named newMain
+
+# Build rule for target.
+newMain: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 newMain
+.PHONY : newMain
+
+# fast build rule for target.
+newMain/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/build
+.PHONY : newMain/fast
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -159,6 +185,7 @@ src/navigation/boat.o: src/navigation/boat.cpp.o
 # target to build an object file
 src/navigation/boat.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/boat.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/boat.cpp.o
 .PHONY : src/navigation/boat.cpp.o
 
 src/navigation/boat.i: src/navigation/boat.cpp.i
@@ -167,6 +194,7 @@ src/navigation/boat.i: src/navigation/boat.cpp.i
 # target to preprocess a source file
 src/navigation/boat.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/boat.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/boat.cpp.i
 .PHONY : src/navigation/boat.cpp.i
 
 src/navigation/boat.s: src/navigation/boat.cpp.s
@@ -175,6 +203,7 @@ src/navigation/boat.s: src/navigation/boat.cpp.s
 # target to generate assembly for a file
 src/navigation/boat.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/boat.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/boat.cpp.s
 .PHONY : src/navigation/boat.cpp.s
 
 src/navigation/hull.o: src/navigation/hull.cpp.o
@@ -183,6 +212,7 @@ src/navigation/hull.o: src/navigation/hull.cpp.o
 # target to build an object file
 src/navigation/hull.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/hull.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/hull.cpp.o
 .PHONY : src/navigation/hull.cpp.o
 
 src/navigation/hull.i: src/navigation/hull.cpp.i
@@ -191,6 +221,7 @@ src/navigation/hull.i: src/navigation/hull.cpp.i
 # target to preprocess a source file
 src/navigation/hull.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/hull.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/hull.cpp.i
 .PHONY : src/navigation/hull.cpp.i
 
 src/navigation/hull.s: src/navigation/hull.cpp.s
@@ -199,6 +230,7 @@ src/navigation/hull.s: src/navigation/hull.cpp.s
 # target to generate assembly for a file
 src/navigation/hull.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/hull.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/hull.cpp.s
 .PHONY : src/navigation/hull.cpp.s
 
 src/navigation/keel.o: src/navigation/keel.cpp.o
@@ -207,6 +239,7 @@ src/navigation/keel.o: src/navigation/keel.cpp.o
 # target to build an object file
 src/navigation/keel.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/keel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/keel.cpp.o
 .PHONY : src/navigation/keel.cpp.o
 
 src/navigation/keel.i: src/navigation/keel.cpp.i
@@ -215,6 +248,7 @@ src/navigation/keel.i: src/navigation/keel.cpp.i
 # target to preprocess a source file
 src/navigation/keel.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/keel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/keel.cpp.i
 .PHONY : src/navigation/keel.cpp.i
 
 src/navigation/keel.s: src/navigation/keel.cpp.s
@@ -223,6 +257,7 @@ src/navigation/keel.s: src/navigation/keel.cpp.s
 # target to generate assembly for a file
 src/navigation/keel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/keel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/keel.cpp.s
 .PHONY : src/navigation/keel.cpp.s
 
 src/navigation/rudder.o: src/navigation/rudder.cpp.o
@@ -231,6 +266,7 @@ src/navigation/rudder.o: src/navigation/rudder.cpp.o
 # target to build an object file
 src/navigation/rudder.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/rudder.cpp.o
 .PHONY : src/navigation/rudder.cpp.o
 
 src/navigation/rudder.i: src/navigation/rudder.cpp.i
@@ -239,6 +275,7 @@ src/navigation/rudder.i: src/navigation/rudder.cpp.i
 # target to preprocess a source file
 src/navigation/rudder.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/rudder.cpp.i
 .PHONY : src/navigation/rudder.cpp.i
 
 src/navigation/rudder.s: src/navigation/rudder.cpp.s
@@ -247,6 +284,7 @@ src/navigation/rudder.s: src/navigation/rudder.cpp.s
 # target to generate assembly for a file
 src/navigation/rudder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/rudder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/rudder.cpp.s
 .PHONY : src/navigation/rudder.cpp.s
 
 src/navigation/sail.o: src/navigation/sail.cpp.o
@@ -255,6 +293,7 @@ src/navigation/sail.o: src/navigation/sail.cpp.o
 # target to build an object file
 src/navigation/sail.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/sail.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/sail.cpp.o
 .PHONY : src/navigation/sail.cpp.o
 
 src/navigation/sail.i: src/navigation/sail.cpp.i
@@ -263,6 +302,7 @@ src/navigation/sail.i: src/navigation/sail.cpp.i
 # target to preprocess a source file
 src/navigation/sail.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/sail.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/sail.cpp.i
 .PHONY : src/navigation/sail.cpp.i
 
 src/navigation/sail.s: src/navigation/sail.cpp.s
@@ -271,7 +311,128 @@ src/navigation/sail.s: src/navigation/sail.cpp.s
 # target to generate assembly for a file
 src/navigation/sail.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/src/navigation/sail.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/navigation/sail.cpp.s
 .PHONY : src/navigation/sail.cpp.s
+
+src/newMain.o: src/newMain.cpp.o
+.PHONY : src/newMain.o
+
+# target to build an object file
+src/newMain.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/newMain.cpp.o
+.PHONY : src/newMain.cpp.o
+
+src/newMain.i: src/newMain.cpp.i
+.PHONY : src/newMain.i
+
+# target to preprocess a source file
+src/newMain.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/newMain.cpp.i
+.PHONY : src/newMain.cpp.i
+
+src/newMain.s: src/newMain.cpp.s
+.PHONY : src/newMain.s
+
+# target to generate assembly for a file
+src/newMain.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/newMain.cpp.s
+.PHONY : src/newMain.cpp.s
+
+src/sphere.o: src/sphere.cpp.o
+.PHONY : src/sphere.o
+
+# target to build an object file
+src/sphere.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sphere.dir/build.make CMakeFiles/Sphere.dir/src/sphere.cpp.o
+.PHONY : src/sphere.cpp.o
+
+src/sphere.i: src/sphere.cpp.i
+.PHONY : src/sphere.i
+
+# target to preprocess a source file
+src/sphere.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sphere.dir/build.make CMakeFiles/Sphere.dir/src/sphere.cpp.i
+.PHONY : src/sphere.cpp.i
+
+src/sphere.s: src/sphere.cpp.s
+.PHONY : src/sphere.s
+
+# target to generate assembly for a file
+src/sphere.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sphere.dir/build.make CMakeFiles/Sphere.dir/src/sphere.cpp.s
+.PHONY : src/sphere.cpp.s
+
+src/world/globe.o: src/world/globe.cpp.o
+.PHONY : src/world/globe.o
+
+# target to build an object file
+src/world/globe.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/world/globe.cpp.o
+.PHONY : src/world/globe.cpp.o
+
+src/world/globe.i: src/world/globe.cpp.i
+.PHONY : src/world/globe.i
+
+# target to preprocess a source file
+src/world/globe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/world/globe.cpp.i
+.PHONY : src/world/globe.cpp.i
+
+src/world/globe.s: src/world/globe.cpp.s
+.PHONY : src/world/globe.s
+
+# target to generate assembly for a file
+src/world/globe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/world/globe.cpp.s
+.PHONY : src/world/globe.cpp.s
+
+src/world/storm.o: src/world/storm.cpp.o
+.PHONY : src/world/storm.o
+
+# target to build an object file
+src/world/storm.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/world/storm.cpp.o
+.PHONY : src/world/storm.cpp.o
+
+src/world/storm.i: src/world/storm.cpp.i
+.PHONY : src/world/storm.i
+
+# target to preprocess a source file
+src/world/storm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/world/storm.cpp.i
+.PHONY : src/world/storm.cpp.i
+
+src/world/storm.s: src/world/storm.cpp.s
+.PHONY : src/world/storm.s
+
+# target to generate assembly for a file
+src/world/storm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/world/storm.cpp.s
+.PHONY : src/world/storm.cpp.s
+
+src/world/world.o: src/world/world.cpp.o
+.PHONY : src/world/world.o
+
+# target to build an object file
+src/world/world.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/world/world.cpp.o
+.PHONY : src/world/world.cpp.o
+
+src/world/world.i: src/world/world.cpp.i
+.PHONY : src/world/world.i
+
+# target to preprocess a source file
+src/world/world.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/world/world.cpp.i
+.PHONY : src/world/world.cpp.i
+
+src/world/world.s: src/world/world.cpp.s
+.PHONY : src/world/world.s
+
+# target to generate assembly for a file
+src/world/world.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/src/world/world.cpp.s
+.PHONY : src/world/world.cpp.s
 
 # Help Target
 help:
@@ -282,6 +443,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SailTest"
+	@echo "... Sphere"
+	@echo "... newMain"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -300,6 +463,21 @@ help:
 	@echo "... src/navigation/sail.o"
 	@echo "... src/navigation/sail.i"
 	@echo "... src/navigation/sail.s"
+	@echo "... src/newMain.o"
+	@echo "... src/newMain.i"
+	@echo "... src/newMain.s"
+	@echo "... src/sphere.o"
+	@echo "... src/sphere.i"
+	@echo "... src/sphere.s"
+	@echo "... src/world/globe.o"
+	@echo "... src/world/globe.i"
+	@echo "... src/world/globe.s"
+	@echo "... src/world/storm.o"
+	@echo "... src/world/storm.i"
+	@echo "... src/world/storm.s"
+	@echo "... src/world/world.o"
+	@echo "... src/world/world.i"
+	@echo "... src/world/world.s"
 .PHONY : help
 
 

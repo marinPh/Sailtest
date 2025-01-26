@@ -97,3 +97,29 @@ void Rudder::computeForce(
         return force;
     }
 
+void Rudder::draw(sf::RenderWindow& window,sf::Transform boatTransform,sf::Vector2f origin_point) {
+    
+     // Create a rectangle shape representing the rudder
+    sf::RectangleShape rudder(sf::Vector2f(20, 5));
+
+    // Set the origin of the rudder to the top left of the rectangle
+    rudder.setOrigin(0, rudder.getSize().y/2); 
+
+    // Position the rudder relative to the provided origin_point
+    // This positions the top-middle of the rudder at origin_point.
+    
+
+    rudder.setPosition(origin_point + sf::Vector2f(position.x, position.y)*25.0f);
+
+    // Optionally set rotation or other properties based on rudder's angle if needed
+    rudder.setRotation(glm::degrees(rudderAngle));  // if you want to rotate the rudder relative to boat's heading
+
+    // Set a fill color for the rudder for visibility (customize as needed)
+    rudder.setFillColor(sf::Color::Red);
+
+    // Draw the rudder using the boat's transform
+    window.draw(rudder, boatTransform);
+
+
+}
+

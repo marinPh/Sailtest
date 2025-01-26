@@ -75,3 +75,8 @@ const glm::vec2 &Keel::getForce() const
 {
     return force;
 }
+
+void Keel::draw(sf::RenderWindow& window,sf::Transform boatTransform,sf::Vector2f origin_point)
+{
+    return;
+}

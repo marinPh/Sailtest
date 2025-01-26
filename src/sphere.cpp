@@ -6,22 +6,24 @@
 #include <iostream>
 #include <vector>
 
-void setupSphereView(float aspect) {
+void setupSphereView(float aspect)
+{
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.f, aspect, 0.1f, 100.f);  // Perspective for sphere
+    gluPerspective(45.f, aspect, 0.1f, 100.f); // Perspective for sphere
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(0, 0, 4,  0, 0, 0,  0, 1, 0);
+    gluLookAt(0, 0, 4, 0, 0, 0, 0, 1, 0);
 }
 
-void setupPlanView(float aspect, float lat, float lon) {
+void setupPlanView(float aspect, float lat, float lon)
+{
     // Set up an orthographic projection for a plan view centered on (lat, lon).
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     float viewHeight = 2.0f; // Adjust for desired zoom level
     float viewWidth = viewHeight * aspect;
-    glOrtho(-viewWidth/2, viewWidth/2, -viewHeight/2, viewHeight/2, 0.1f, 100.f);
+    glOrtho(-viewWidth / 2, viewWidth / 2, -viewHeight / 2, viewHeight / 2, 0.1f, 100.f);
 
     // Compute center position on the sphere based on (lat, lon)
     float radius = 1.0f;
@@ -33,9 +35,7 @@ void setupPlanView(float aspect, float lat, float lon) {
     glLoadIdentity();
     // Position the camera close to and above the point, looking directly at it.
     float cameraDistance = 0.5f; // How close the camera is to the surface
-    gluLookAt(centerX, centerY, centerZ + cameraDistance,
-              centerX, centerY, centerZ,
-              0, 1, 0);
+    gluLookAt(centerX, centerY, centerZ + cameraDistance, centerX, centerY, centerZ, 0, 1, 0);
 }
 
 int main()
@@ -139,15 +139,13 @@ int main()
                 lastMouseX = currentX;
                 lastMouseY = currentY;
             }
-
-            
         }
 
         // Clear buffers and set up camera
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
-        gluLookAt(0, 0, 4,  0, 0, 0,  0, 1, 0);
+        gluLookAt(0, 0, 4, 0, 0, 0, 0, 1, 0);
 
         // Apply rotations from drag input
         glRotatef(rotationX, 1.f, 0.f, 0.f);
@@ -166,39 +164,39 @@ int main()
         glTranslatef(pointX, pointY, pointZ);
         float size = 0.02f;
         glBegin(GL_QUADS);
-            // Front face
-            glVertex3f(-size, -size,  size);
-            glVertex3f( size, -size,  size);
-            glVertex3f( size,  size,  size);
-            glVertex3f(-size,  size,  size);
-            // Back face
-            glVertex3f(-size, -size, -size);
-            glVertex3f( size, -size, -size);
-            glVertex3f( size,  size, -size);
-            glVertex3f(-size,  size, -size);
-            // Left face
-            glVertex3f(-size, -size, -size);
-            glVertex3f(-size, -size,  size);
-            glVertex3f(-size,  size,  size);
-            glVertex3f(-size,  size, -size);
-            // Right face
-            glVertex3f( size, -size, -size);
-            glVertex3f( size, -size,  size);
-            glVertex3f( size,  size,  size);
-            glVertex3f( size,  size, -size);
-            // Top face
-            glVertex3f(-size,  size, -size);
-            glVertex3f( size,  size, -size);
-            glVertex3f( size,  size,  size);
-            glVertex3f(-size,  size,  size);
-            // Bottom face
-            glVertex3f(-size, -size, -size);
-            glVertex3f( size, -size, -size);
-            glVertex3f( size, -size,  size);
-            glVertex3f(-size, -size,  size);
+        // Front face
+        glVertex3f(-size, -size, size);
+        glVertex3f(size, -size, size);
+        glVertex3f(size, size, size);
+        glVertex3f(-size, size, size);
+        // Back face
+        glVertex3f(-size, -size, -size);
+        glVertex3f(size, -size, -size);
+        glVertex3f(size, size, -size);
+        glVertex3f(-size, size, -size);
+        // Left face
+        glVertex3f(-size, -size, -size);
+        glVertex3f(-size, -size, size);
+        glVertex3f(-size, size, size);
+        glVertex3f(-size, size, -size);
+        // Right face
+        glVertex3f(size, -size, -size);
+        glVertex3f(size, -size, size);
+        glVertex3f(size, size, size);
+        glVertex3f(size, size, -size);
+        // Top face
+        glVertex3f(-size, size, -size);
+        glVertex3f(size, size, -size);
+        glVertex3f(size, size, size);
+        glVertex3f(-size, size, size);
+        // Bottom face
+        glVertex3f(-size, -size, -size);
+        glVertex3f(size, -size, -size);
+        glVertex3f(size, -size, size);
+        glVertex3f(-size, -size, size);
         glEnd();
         glPopMatrix();
-
+        
         // Draw wind vectors on globe
                 // Draw wind vectors on globe with arrowheads
         const int latSteps = 10;
@@ -236,6 +234,8 @@ int main()
                 // Placeholder wind function; replace with your own
                 float w_e = cos(lat);
                 float w_n = -sin(lat);
+
+                
 
                 // Compute 3D wind vector
                 float wind3D_x = w_e * E_x + w_n * N_x;

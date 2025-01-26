@@ -2,6 +2,7 @@
 #define HYDROSURFACE_H
 
 #include <glm/glm.hpp>
+#include <SFML/Graphics.hpp>
 
 /**
  * @brief Abstract base class for hydrodynamic surfaces (e.g., keel, rudder, sail).
@@ -19,6 +20,7 @@ public:
     virtual const glm::vec2& getForce() const = 0;
     
     virtual glm::vec2 getCEOtoCOMB() = 0;
+    virtual void draw(sf::RenderWindow& window,sf::Transform boatTransform,sf::Vector2f origin_point) = 0;
 
 
     

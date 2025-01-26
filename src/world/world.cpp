@@ -1,45 +1,87 @@
 
 #include "world.h"
-#include <iostream>
 #include <cmath>
 #include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
 
-World::World()
+World::World(sf::Sprite& boatS, sf::RenderWindow &window)
+    : 
+    window(window),
+    pboat(boatS, glm::vec2(window.getSize().x / 2, window.getSize().y / 2)),
+    globe(1.0f, 40, 40, window), 
+    boatS(boatS),
+    view(sf::FloatRect(0, 0, window.getSize().x, window.getSize().y))
 {
-    // Initialize wind
-    pboat = Boat();
     storms = std::vector<Storm *>();
+    storms.push_back(new Storm(0.1f, glm::vec2(0.0f, 0.0f), glm::vec2(0.0f, 0.0f)));
+    storms.push_back(new Storm(100000.0f, glm::vec2(300.0f, 0.0f), glm::vec2(400.0f, 0.0f)));
     AIboats = std::vector<Boat *>();
+     // Initialize the view to cover the screen dimensions
+
 }
 
-glm::vec2 World::getWind(float lat, float lon){
-// Placeholder wind function; replace with your own
-float w_e = cos(lat);
-float w_n = -sin(lat);
-for (auto storm : storms)
-{
-    glm::vec2 stormCenter = storm->getCenter();
-    float stormSize = storm->getSize();
-    glm::vec2 stormDirection = storm->getDirection();
-    glm::vec2 boatPosition = pboat.GetVec();
-    glm::vec2 stormToBoat = boatPosition - stormCenter;
-    float distance = glm::length(stormToBoat);
 
-  
-    float angle = std::atan2(stormToBoat.y, stormToBoat.x);
-    glm::vec2 windFromStorm = (stormSize > distance) ?  glm::vec2(0.0f,0.0f): glm::vec2(-std::sin(angle), std::cos(angle)) * stormSize / (distance * distance);
-    
-    // Scale wind based on storm size and distance
-    w_e += windFromStorm.x;
-    w_n += windFromStorm.y;
-}
-return glm::vec2(w_e, w_n);
-    
-}
-
-void World::draw(sf::RenderWindow& window)
+void World::draw(sf::RenderWindow &window)
 {
     // Draw the boat
-    pboat.draw(window);
  
+    if (isPlanarView)
+    {
+        pboat.draw(window);
+    }
+    else
+    {
+        // Draw the globe
+        std::cout << "Drawing Globe" << std::endl;
+        globe.draw(storms);
+    }
+}
+// Convert plane coordinates to geographic lat/lon starting from Null Island
+
+
+
+
+
+void World::update(float dt)
+{
+    // Update the boat
+    //tranform x y coordinates to lat lon
+    auto lat = 0.0f;
+    auto lon = 0.0f;
+    
+    glm::vec2 wind = globe.getWind(lat, lon,storms);
+
+    std::cout << "Wind: " << wind.x << ", " << wind.y << std::endl;
+    pboat.update(dt, wind);
+
+    // Update the globe
+    if (!isPlanarView)
+    {
+        globe.update(dt);
+    }
+}
+
+void World::handleEvents(sf::Event& e,float dt)
+{
+    if (isPlanarView)
+    {
+        pboat.handleEvents(e,dt);
+    }
+    else
+    {
+        globe.handleEvents(e,dt);
+    }
+}
+
+
+
+void World::setPlanarView() {
+    isPlanarView = true;
+    view.setCenter(pboat.getPosition()); // Center the view on the boat
+    window.setView(view);                // Apply the view
+}
+
+void World::setSphericalView() {
+    isPlanarView = false;
+    // No specific SFML view settings for the globe
 }

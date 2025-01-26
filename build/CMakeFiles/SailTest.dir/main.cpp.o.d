@@ -264,7 +264,8 @@ CMakeFiles/SailTest.dir/main.cpp.o: /home/marinph/PG/Sailtest/main.cpp \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
  /usr/include/c++/13/tr1/riemann_zeta.tcc /usr/include/c++/13/iostream \
  /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
- /home/marinph/PG/Sailtest/src/navigation/boat.h /usr/include/glm/glm.hpp \
+ /home/marinph/PG/Sailtest/src/navigation/boat.h \
+ /home/marinph/PG/Sailtest/src/navigation/hull.h /usr/include/glm/glm.hpp \
  /usr/include/glm/detail/_fixes.hpp /usr/include/glm/detail/setup.hpp \
  /usr/include/c++/13/cassert /usr/include/assert.h \
  /usr/include/glm/simd/platform.h /usr/include/c++/13/cstdint \
@@ -389,19 +390,23 @@ CMakeFiles/SailTest.dir/main.cpp.o: /home/marinph/PG/Sailtest/main.cpp \
  /usr/include/glm/detail/type_half.hpp \
  /usr/include/glm/detail/type_half.inl /usr/include/glm/integer.hpp \
  /usr/include/glm/detail/func_integer.inl \
- /usr/include/glm/gtc/type_ptr.hpp /usr/include/glm/gtc/quaternion.hpp \
+ /home/marinph/PG/Sailtest/src/navigation/hydrosurface.h \
+ /home/marinph/PG/Sailtest/src/navigation/keel.h \
+ /home/marinph/PG/Sailtest/src/navigation/rudder.h \
+ /home/marinph/PG/Sailtest/src/navigation/sail.h \
+ /usr/include/glm/gtc/matrix_transform.hpp \
+ /usr/include/glm/ext/matrix_projection.hpp \
  /usr/include/glm/gtc/constants.hpp \
  /usr/include/glm/ext/scalar_constants.hpp \
  /usr/include/glm/ext/scalar_constants.inl \
  /usr/include/glm/gtc/constants.inl \
- /usr/include/glm/gtc/matrix_transform.hpp \
- /usr/include/glm/ext/matrix_projection.hpp \
  /usr/include/glm/ext/matrix_projection.inl \
  /usr/include/glm/ext/matrix_clip_space.hpp \
  /usr/include/glm/ext/matrix_clip_space.inl \
  /usr/include/glm/ext/matrix_transform.hpp \
  /usr/include/glm/ext/matrix_transform.inl \
  /usr/include/glm/gtc/matrix_transform.inl \
+ /usr/include/glm/gtc/type_ptr.hpp /usr/include/glm/gtc/quaternion.hpp \
  /usr/include/glm/ext/vector_relational.hpp \
  /usr/include/glm/ext/vector_relational.inl \
  /usr/include/glm/detail/type_float.hpp \
@@ -434,9 +439,4 @@ CMakeFiles/SailTest.dir/main.cpp.o: /home/marinph/PG/Sailtest/main.cpp \
  /usr/include/glm/ext/vector_uint1.hpp \
  /usr/include/glm/ext/vector_uint1_sized.hpp /usr/include/c++/13/cstring \
  /usr/include/string.h /usr/include/strings.h \
- /usr/include/glm/gtc/type_ptr.inl \
- /home/marinph/PG/Sailtest/src/navigation/rudder.h \
- /home/marinph/PG/Sailtest/src/navigation/hydrosurface.h \
- /home/marinph/PG/Sailtest/src/navigation/keel.h \
- /home/marinph/PG/Sailtest/src/navigation/hull.h \
- /home/marinph/PG/Sailtest/src/navigation/sail.h
+ /usr/include/glm/gtc/type_ptr.inl

@@ -1,3 +1,5 @@
 /home/marinph/PG/Sailtest/build/CMakeFiles/SailTest.dir
+/home/marinph/PG/Sailtest/build/CMakeFiles/Sphere.dir
+/home/marinph/PG/Sailtest/build/CMakeFiles/newMain.dir
 /home/marinph/PG/Sailtest/build/CMakeFiles/edit_cache.dir
 /home/marinph/PG/Sailtest/build/CMakeFiles/rebuild_cache.dir

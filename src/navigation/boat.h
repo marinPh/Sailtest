@@ -17,7 +17,7 @@
 class Boat
 {
 public:
-    Boat(sf::Sprite& sprite,glm::vec2 startingPos);
+    Boat( sf::Sprite& sprite,glm::vec2 startingPos);
     // Physical properties
     double mass = 100.0;     // kg
     double inertiaZ = 500.0; //
@@ -61,6 +61,7 @@ public:
     void sailDecrement(double dt);
     glm::vec2 getSailEnd();
     double getSailAngle() const;
+    void handleEvents(sf::Event& e,float dt);
 
     glm::vec2 GetVec();
     glm::vec2 GetWVec();

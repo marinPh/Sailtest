@@ -106,5 +106,27 @@ void Sail::decrementAngle(double delta)
 const glm::vec2& Sail::getPosition() const{
     return position;
 }
+void Sail::draw(sf::RenderWindow& window, sf::Transform boatTransform, sf::Vector2f origin_point) {
+    // Create a rectangle shape representing the sail
+    sf::RectangleShape sail(sf::Vector2f(50, 10));
+
+    // Set the origin of the sail to the top left of the rectangle
+    sail.setOrigin(0, sail.getSize().y/2); 
+
+    // Position the sail relative to the provided origin_point
+    // This positions the top-middle of the sail at origin_point.
+    
+
+    sail.setPosition(origin_point+sf::Vector2f(position.x, position.y)*10.0f);
+
+    // Optionally set rotation or other properties based on Sail's angle if needed
+    sail.setRotation(glm::degrees(angleToBoat));  // if you want to rotate the sail relative to boat's heading
+
+    // Set a fill color for the sail for visibility (customize as needed)
+    sail.setFillColor(sf::Color::Green);
+
+    // Draw the sail using the boat's transform
+    window.draw(sail, boatTransform);
+}
 
 

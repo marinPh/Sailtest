@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation
+CXX_INCLUDES = -I/home/marinph/PG/Sailtest/src -I/home/marinph/PG/Sailtest/src/navigation -I/home/marinph/PG/Sailtest/src/world
 
 CXX_FLAGS = -g -std=gnu++20
 

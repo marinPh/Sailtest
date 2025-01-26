@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 #include "hydrosurface.h"
+#include <SFML/Graphics.hpp>
 
 /**
  * @brief 
@@ -21,6 +22,7 @@ public:
     void computeForce(const glm::vec2& wrelativeVelocity,const glm::vec2& arelativeVelocity, double adensity, double wdensity,double wAOA,
                         double aAOA);
     const glm::vec2& getForce() const;
+    void draw(sf::RenderWindow& window,sf::Transform boatTransform,sf::Vector2f origin_point);
     private:
         glm::vec2 position{0.0f, 0.0f}; // coordinates on the boat
         glm::vec2 force{0.0f, 0.0f}; // coordinates on the boat

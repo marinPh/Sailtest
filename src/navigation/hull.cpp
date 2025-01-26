@@ -65,3 +65,7 @@ const glm::vec2 &Hull::getForce() const
 {
     return force;
 }
+
+void Hull::draw(sf::RenderWindow &window, sf::Transform boatTransform,sf::Vector2f origin_point){
+    
+}

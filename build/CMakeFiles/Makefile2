@@ -64,6 +64,8 @@ CMAKE_BINARY_DIR = /home/marinph/PG/Sailtest/build
 
 # The main recursive "all" target.
 all: CMakeFiles/SailTest.dir/all
+all: CMakeFiles/Sphere.dir/all
+all: CMakeFiles/newMain.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +74,8 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/SailTest.dir/clean
+clean: CMakeFiles/Sphere.dir/clean
+clean: CMakeFiles/newMain.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -99,6 +103,58 @@ SailTest: CMakeFiles/SailTest.dir/rule
 CMakeFiles/SailTest.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SailTest.dir/build.make CMakeFiles/SailTest.dir/clean
 .PHONY : CMakeFiles/SailTest.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Sphere.dir
+
+# All Build rule for target.
+CMakeFiles/Sphere.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sphere.dir/build.make CMakeFiles/Sphere.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sphere.dir/build.make CMakeFiles/Sphere.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/marinph/PG/Sailtest/build/CMakeFiles --progress-num=8,9 "Built target Sphere"
+.PHONY : CMakeFiles/Sphere.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Sphere.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marinph/PG/Sailtest/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Sphere.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marinph/PG/Sailtest/build/CMakeFiles 0
+.PHONY : CMakeFiles/Sphere.dir/rule
+
+# Convenience name for target.
+Sphere: CMakeFiles/Sphere.dir/rule
+.PHONY : Sphere
+
+# clean rule for target.
+CMakeFiles/Sphere.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Sphere.dir/build.make CMakeFiles/Sphere.dir/clean
+.PHONY : CMakeFiles/Sphere.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/newMain.dir
+
+# All Build rule for target.
+CMakeFiles/newMain.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/marinph/PG/Sailtest/build/CMakeFiles --progress-num=10,11,12,13,14,15,16,17,18,19 "Built target newMain"
+.PHONY : CMakeFiles/newMain.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/newMain.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marinph/PG/Sailtest/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/newMain.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marinph/PG/Sailtest/build/CMakeFiles 0
+.PHONY : CMakeFiles/newMain.dir/rule
+
+# Convenience name for target.
+newMain: CMakeFiles/newMain.dir/rule
+.PHONY : newMain
+
+# clean rule for target.
+CMakeFiles/newMain.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newMain.dir/build.make CMakeFiles/newMain.dir/clean
+.PHONY : CMakeFiles/newMain.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
